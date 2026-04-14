@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Custom theme configuration */
+@theme {
+  /* Container */
+  --container-center: true;
+  --container-padding: 2rem;
+  --container-2xl: 1400px;
+
+  /* Font families */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Colors - Light theme (default) */
+  --background: hsl(104 47% 96%);
+  --foreground: hsl(215 51% 23%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(215 51% 23%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(215 51% 23%);
+  --primary: hsl(204 38% 44%);
+  --primary-foreground: hsl(104 47% 96%);
+  --secondary: hsl(182 31% 76%);
+  --secondary-foreground: hsl(215 51% 23%);
+  --muted: hsl(182 20% 90%);
+  --muted-foreground: hsl(215 20% 45%);
+  --accent: hsl(355 76% 56%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(355 76% 56%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(204 25% 82%);
+  --input: hsl(204 25% 85%);
+  --ring: hsl(204 38% 44%);
+  
+  /* Border radius */
+  --radius: 0.75rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Custom heal colors */
+  --heal-navy: hsl(215 51% 23%);
+  --heal-blue: hsl(204 38% 44%);
+  --heal-teal: hsl(182 31% 76%);
+  --heal-cream: hsl(104 47% 96%);
+  --heal-red: hsl(355 76% 56%);
+
+  /* Sidebar colors */
+  --sidebar-background: hsl(215 51% 23%);
+  --sidebar-foreground: hsl(104 47% 96%);
+  --sidebar-primary: hsl(204 38% 44%);
+  --sidebar-primary-foreground: hsl(104 47% 96%);
+  --sidebar-accent: hsl(215 45% 30%);
+  --sidebar-accent-foreground: hsl(104 47% 96%);
+  --sidebar-border: hsl(215 40% 30%);
+  --sidebar-ring: hsl(204 38% 44%);
+
+  /* Keyframes */
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--heal-blue) / 0.4); }
+    50% { box-shadow: 0 0 20px 10px hsl(var(--heal-blue) / 0.1); }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-fade-in: fade-in 0.3s ease-out;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: hsl(215 51% 12%);
+    --foreground: hsl(104 47% 96%);
+    --card: hsl(215 51% 16%);
+    --card-foreground: hsl(104 47% 96%);
+    --popover: hsl(215 51% 16%);
+    --popover-foreground: hsl(104 47% 96%);
+    --primary: hsl(204 38% 54%);
+    --primary-foreground: hsl(215 51% 12%);
+    --secondary: hsl(182 25% 30%);
+    --secondary-foreground: hsl(104 47% 96%);
+    --muted: hsl(215 30% 20%);
+    --muted-foreground: hsl(182 20% 65%);
+    --accent: hsl(355 76% 56%);
+    --accent-foreground: hsl(0 0% 100%);
+    --destructive: hsl(355 76% 50%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: hsl(215 30% 25%);
+    --input: hsl(215 30% 25%);
+    --ring: hsl(204 38% 54%);
+    --sidebar-background: hsl(215 51% 10%);
+    --sidebar-foreground: hsl(104 47% 96%);
+    --sidebar-primary: hsl(204 38% 54%);
+    --sidebar-primary-foreground: hsl(104 47% 96%);
+    --sidebar-accent: hsl(215 45% 18%);
+    --sidebar-accent-foreground: hsl(104 47% 96%);
+    --sidebar-border: hsl(215 40% 18%);
+    --sidebar-ring: hsl(204 38% 54%);
+  }
+}
+
+/* Base styles */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .heal-gradient {
+    background: linear-gradient(135deg, var(--heal-navy) 0%, var(--heal-blue) 100%);
+  }
+
+  .heal-gradient-accent {
+    background: linear-gradient(135deg, var(--heal-red) 0%, var(--heal-blue) 100%);
+  }
+
+  .heal-glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .heal-text-gradient {
+    background: linear-gradient(135deg, var(--heal-navy), var(--heal-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
