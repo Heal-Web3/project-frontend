@@ -1,5 +1,5 @@
 import { useWeb3 } from '@/context/Web3Context';
-import { useApp, UserRole } from '@/context/AppContext';
+import { useApp, type UserRole } from '@/context/AppContext';
 import { shortenAddress } from '@/utils/formatters';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
